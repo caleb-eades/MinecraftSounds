@@ -32,7 +32,7 @@ public class MobListActivity extends Activity {
   Activity act = this;
   Context context = (Context) act;
   final SoundPool sp = new SoundPool(21, AudioManager.STREAM_MUSIC, 0);
-  private MyItemClickListener click;
+  private ItemClickListener click;
   public static int[] soundIds = new int[21];
   public static int[] sounds = {
     R.raw.mob_bat, R.raw.mob_blaze, R.raw.mob_cat,
@@ -78,7 +78,7 @@ public class MobListActivity extends Activity {
     AudioManager audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
 
     (new LoadSounds()).execute();
-    click = new MyItemClickListener();
+    click = new ItemClickListener();
     click.giveSoundPool(sp);
     click.giveAudioManager(audioManager);
     click.setContext(context);

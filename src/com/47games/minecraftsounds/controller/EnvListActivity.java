@@ -31,7 +31,7 @@ public class EnvListActivity extends Activity {
   public static final String TAG = EnvListActivity.class.getSimpleName();
   Context context = this;
   final SoundPool sp = new SoundPool(25, AudioManager.STREAM_MUSIC, 0);
-  private MyItemClickListener click;
+  private ItemClickListener click;
   public static int[] soundIds = new int[25];
   public static int[] sounds = {
     R.raw.env_chest_open, R.raw.env_cloth, R.raw.env_door,
@@ -74,7 +74,7 @@ public class EnvListActivity extends Activity {
     AudioManager audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
 
     (new LoadSounds()).execute();
-    click = new MyItemClickListener();
+    click = new ItemClickListener();
     click.giveSoundPool(sp);
     click.giveAudioManager(audioManager);
     click.setContext(context);

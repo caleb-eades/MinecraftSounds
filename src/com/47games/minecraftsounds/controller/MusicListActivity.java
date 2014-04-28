@@ -35,7 +35,7 @@ public class MusicListActivity extends Activity {
   public static final String TAG = EnvListActivity.class.getSimpleName();
   Context context = this;
   MediaPlayer[] mediaPlayers = new MediaPlayer[12];
-  private MyMpItemClickListener click;
+  private MusicPlayerItemClickListener click;
   int[] sounds = {
     R.raw.music_blocks,
     R.raw.music_cat,
@@ -71,7 +71,7 @@ public class MusicListActivity extends Activity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.music);
     GridView main = (GridView) findViewById(R.id.music_grid);
-    MpImageAdapter adapt = new MpImageAdapter(context);
+    ImageAdapter adapt = new ImageAdapter(context);
     registerForContextMenu(main);
     adapt.giveImageIds(images);
     main.setAdapter(adapt);
@@ -81,7 +81,7 @@ public class MusicListActivity extends Activity {
     AudioManager audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
 
     (new LoadSounds()).execute();
-    click = new MyMpItemClickListener();
+    click = new MusicPlayerItemClickListener();
     click.giveAudioManager(audioManager);
     click.setContext(context);
     main.setOnItemClickListener(click);

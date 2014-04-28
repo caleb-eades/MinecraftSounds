@@ -8,7 +8,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView;
 import android.media.AudioManager;
 
-public class MyItemClickListener implements OnItemClickListener {
+public class ItemClickListener implements OnItemClickListener {
   Context context;
   SoundPool sp;
   int[] soundIds;

@@ -15,7 +15,7 @@ import java.lang.IllegalArgumentException;
 import java.lang.NullPointerException;
 import android.widget.ImageView;
 
-public class MyMpItemClickListener implements OnItemClickListener {
+public class MusicPlayerItemClickListener implements OnItemClickListener {
   Context context;
   AudioManager manager;
   MediaPlayer mp;
