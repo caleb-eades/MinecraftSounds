@@ -37,7 +37,7 @@ public class RingtoneUtil {
         try {
             File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_RINGTONES);
             //String ringtonePath = context.getExternalFilesDir(Environment.DIRECTORY_RINGTONES).toString();
-            newSoundFile = new File(path, name + ".oog");
+            newSoundFile = new File(path, name + "-mc-sounds-app.oog");
             path.mkdirs();
         } catch (NullPointerException e) {
             e.printStackTrace();
@@ -73,7 +73,7 @@ public class RingtoneUtil {
 
         ContentValues values = new ContentValues();
         values.put(MediaStore.MediaColumns.DATA, newSoundFile.getAbsolutePath());
-        values.put(MediaStore.MediaColumns.TITLE, name);
+        values.put(MediaStore.MediaColumns.TITLE, "Minecraft " + name);
         values.put(MediaStore.MediaColumns.MIME_TYPE, "audio/oog");
         values.put(MediaStore.MediaColumns.SIZE, newSoundFile.length());
         values.put(MediaStore.Audio.Media.ARTIST, R.string.app_name);
