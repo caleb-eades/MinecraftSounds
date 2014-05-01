@@ -16,6 +16,7 @@ import android.media.SoundPool;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView;
 import android.widget.Toast;
@@ -115,10 +116,12 @@ public class MobListActivity extends Activity {
 
   @Override
   public boolean onContextItemSelected(MenuItem item) {
+    AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
+    int position = info.position;
     switch (item.getItemId()) {
       case R.id.menu_set_ringtone:
-        Ringtone ring = new Ringtone(item, getContentResolver(), act);
-        ring.setAsRingtone();
+        RingtoneUtil ring = new RingtoneUtil(getContentResolver(), act);
+        ring.setAsRingtone(names[position], sounds[position]);
         return true;
       default:
         return super.onContextItemSelected(item);

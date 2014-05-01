@@ -16,6 +16,7 @@ import android.media.SoundPool;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView;
 import android.widget.Toast;
@@ -29,7 +30,8 @@ import android.util.Log;
 
 public class EnvListActivity extends Activity {
   public static final String TAG = EnvListActivity.class.getSimpleName();
-  Context context = this;
+  Activity act = this;
+  Context context = (Context) this;
   final SoundPool sp = new SoundPool(25, AudioManager.STREAM_MUSIC, 0);
   private ItemClickListener click;
   public static int[] soundIds = new int[25];
@@ -111,8 +113,12 @@ public class EnvListActivity extends Activity {
 
   @Override
   public boolean onContextItemSelected(MenuItem item) {
+    AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
+    int position = info.position;
     switch (item.getItemId()) {
       case R.id.menu_set_ringtone:
+        RingtoneUtil ring = new RingtoneUtil(getContentResolver(), act);
+        ring.setAsRingtone(names[position], sounds[position]);
         return true;
       default:
         return super.onContextItemSelected(item);
